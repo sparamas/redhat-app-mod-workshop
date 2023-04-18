@@ -144,3 +144,38 @@ rfc2307:
   userNameAttributes:
   - uid[~] $
 ```
+
+```
+The settings we provide for you in these examples generally restrict projects to:
+
+A total CPU quota of 4 cores (4000m) where
+
+Individual containers
+
+must use 4 cores or less
+
+cannot be defined with less than 10 milicores
+
+will default to a request of 100 milicores (if not specified)
+
+may burst up to a limit of 4 cores (if not specified)
+
+A total memory usage of 8 Gibibyte (8192 Megabytes) where
+
+Individual containers
+
+must use 1 Gi or less
+
+cannot be defined with less than 5 Mi
+
+will default to a request of 512 Mi
+
+may burst up to a limit of 1024 Mi
+
+Total storage claims of 25 Gi or less
+
+A total number of 5 volume claims
+
+10 or less Pods
+
+```
