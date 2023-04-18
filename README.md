@@ -117,3 +117,30 @@ oc get clusterrolebinding dashboard-cluster-admin -o yaml
 Notice that our ServiceAccount is a subject in this ClusterRoleBinding with a role referenced being the cluster-admin ClusterRole
 
 As a cluster-admin throughout the exercises, you will be able to do anything with the cluster as you have noted earlier, so follow instructions carefully.
+
+
+```
+[~] $ cat /opt/app-root/src/support/groupsync.yaml
+kind: LDAPSyncConfig
+apiVersion: v1
+url: ldaps://ldap.jumpcloud.com
+bindDN: uid=openshiftworkshop,ou=Users,o=5e615ba46b812e7da02e93b5,dc=jumpcloud,dc
+=com
+bindPassword: b1ndP^ssword
+rfc2307:
+  groupsQuery:
+    baseDN: ou=Users,o=5e615ba46b812e7da02e93b5,dc=jumpcloud,dc=com
+    derefAliases: never
+    filter: '(|(cn=ose-*))'
+  groupUIDAttribute: dn
+  groupNameAttributes:
+  - cn
+  groupMembershipAttributes:
+  - member
+  usersQuery:
+    baseDN: ou=Users,o=5e615ba46b812e7da02e93b5,dc=jumpcloud,dc=com
+    derefAliases: never
+  userUIDAttribute: dn
+  userNameAttributes:
+  - uid[~] $
+```
